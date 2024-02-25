@@ -1,7 +1,14 @@
-// alert('Hi Javascript basic!')
+// console.log('Day la log')
 
-var fullName = 'ctkc';
-var age = 26;
+// confirm('Xac nhan ban du tuoi!');
+// prompt('Xac nhan ban du tuoi!');
 
-// alert(fullName)
-//cmt: ctrl + / hoặc /**
+/* setTimeout(function(){
+    alert('Thong bao')
+}, 3000)//ms*/
+
+/* setInterval(function()){
+    alert('Thong bao') 
+,1000}
+//khác với settimeout là nó lặp lại
+*/
