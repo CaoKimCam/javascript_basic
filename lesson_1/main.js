@@ -1,22 +1,15 @@
-// console.log('Day la log')
 
-// confirm('Xac nhan ban du tuoi!');
-// prompt('Xac nhan ban du tuoi!');
+//Return hàm trong JS cơ bản
 
-/* setTimeout(function(){
-    alert('Thong bao')
-}, 3000)//ms*/
+// var isConfirm = confirm('Message?');
 
-/* setInterval(function()){
-    alert('Thong bao') 
-,1000}
-//khác với settimeout là nó lặp lại
-*/
-function writeLog(){
-    var myString ='';
-    for (var param of arguments){
-        myString += `${param} -`
-    }
-    console.log(myString)
+// console.log(isConfirm);
+
+function cong(a,b){
+    // return a+b;
+    return a.toString()+ b.toString();
+    //nếu không trả về giá trị, sẽ trả về undifined
 }
-writeLog('Log 1', 'Log 2');
+var result = cong(2,8);
+console.log(result);
+
