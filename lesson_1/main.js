@@ -12,3 +12,11 @@
 ,1000}
 //khác với settimeout là nó lặp lại
 */
+function writeLog(){
+    var myString ='';
+    for (var param of arguments){
+        myString += `${param} -`
+    }
+    console.log(myString)
+}
+writeLog('Log 1', 'Log 2');
