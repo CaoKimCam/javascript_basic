@@ -43,4 +43,24 @@ var isFree= courses.every(function(course, index)//callback: gọi ngược lạ
 
 console.log(isFree);//nếu tất cả khoá học có coin đều =0 trả về true
 
-//some()
+//some(): ngược lại với every, nó kiểm tra toàn bộ
+var isFree= courses.every(function(course, index)//cb
+{
+    return course.coin===0//chỉ cần có 1 cái đúng, nó sẽ trả về true
+});
+
+//find: tìm và trả
+var isFree= courses.some(function(course, index)
+{
+    return course.coin===0
+});
+
+var isFree= courses.find(function(course, index)
+{
+    return course.name==='Ruby';
+});
+console.log(course);//nếu không có trả về undefined
+//filter sẽ trả về tất cả phần tử thoả mãn, còn find trả về 1
+
+
+
