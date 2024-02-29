@@ -62,5 +62,18 @@ var isFree= courses.find(function(course, index)
 console.log(course);//nếu không có trả về undefined
 //filter sẽ trả về tất cả phần tử thoả mãn, còn find trả về 1
 
+//map: khi muốnn chỉnh sửa, thay đổi element của mảng
+var newCourses = courses.map(function coureHandler(course1, index, originArray){
+    // return course1;//sẽ trả về mảng cũ
+    return{
+        id: course1.id,
+        name: `Khoa hoc: ${course1.name}`,
+        coin: course1.coin,
+        conText: `Gia: ${course1.coin}`,
+        originArray: originArray
+    }
+});//phải truyền đối số, nếu không truyền bị lỗi
+//trả về mảng có số ptu = mảng cũ//câllback
+//sử dụng để hiển thị mã html
 
-
+//reduce
