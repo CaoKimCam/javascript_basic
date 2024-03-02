@@ -76,4 +76,44 @@ var newCourses = courses.map(function coureHandler(course1, index, originArray){
 //trả về mảng có số ptu = mảng cũ//câllback
 //sử dụng để hiển thị mã html
 
-//reduce
+//reduce: ví dụ muốn nhận 1 kq duy nhất là tổng số coin
+var i=0;
+function coinHandler(accumalator, currentValue, currentIndex, originArray){//accumalator là biến lưu trữ
+    //courses và originArray chung vùng nhớ, bị thay đổi là đổi chung
+    i++;
+
+    console.log(i, accumalator);
+    return accumalator + currentIndex.coin;
+}
+var total = 0;
+total = courses.reduce(coinHandler, 0);//0 là giá trị khởi tạo gán cho biến lưu trữ(total, accumulator)
+
+//mấy hàm này giúp dễ hiểu, ngắn gọn, hiệu năng hơn for
+var totalCoin = courses.reduce((a,b) => a+b.coin,0)
+
+
+var sports = [
+    {
+        name: 'Bơi lội',
+        gold: 11
+    },
+    {
+        name: 'Boxing',
+        gold: 3
+    },
+    {
+        name: 'Đạp xe',
+        gold: 4
+    },
+    {
+        name: 'Đấu kiếm',
+        gold: 5
+    },
+]
+function getTotalGold(courses){
+   return courses.reduce((a,b)=> a+b.gold, 0) 
+}
+
+
+// Expected results:
+console.log(getTotalGold(sports)) // Output: 23
