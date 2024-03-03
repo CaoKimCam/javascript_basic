@@ -99,3 +99,31 @@ for (var index in courses){
 // var courses = new Array(10): mảng trống, gán đọ dài 10
 // var courses = new Array(10,2):được hiểu là 2 ptu của mảng
 
+//My forEach() method
+//foreach: check care lenth
+var courses = [
+    'javascript',
+    'PHP',
+    'Ruby'
+]
+//object prototype: sinh ra 1 element bên trong-> in ra forEach2
+// for in duyệt qua cả prototype
+
+Array.prototype.forEach2 = function(callback){
+    for (var index in this){
+        if(this.hasOwnProperty(index))//kiểm tra có nằm trong phương tính, thuộc tính gần nhất của object không
+        {
+            callback(this[index], index, this)
+        }
+    }
+}
+
+courses.forEach2(function(course, index, array){
+    course.log(course,index, array);
+})
+//Ôn lại để hiểu:
+// 1. Object protoype
+//2. For in
+// 3. hasOwnProperty
+
+
