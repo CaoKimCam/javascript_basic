@@ -149,14 +149,17 @@ var filterCourses = courses.filter2(function(course, index, array){
 //My some() method: tối hiểu có ptu nào như đk
 //không lọc qua empty
 Array.prototype.some2 = function(callback){
-    var output = false;
+    var output = true;
     for (var index in this){
         if (this.hasOwnProperty(index)){
-            if(callback(this[index], index, this))//this là chính array của mình
-                return true;
+            var result = callback(this[index], index, this);
+            if (!result){
+                output = false; 
+                break;
+            }
         }
     }
-    return false;
+    return true;
 }
 
 var courses = [
@@ -173,5 +176,12 @@ var courses = [
 ]
 
 var result = courses.some(function(course, index){
-    return ;
+    return course.isFinish==='true';
+})
+
+//My every() method
+//kiểm tra full
+
+var result = courses.some(function(course, index){
+    return course.isFinish==='true';
 })
