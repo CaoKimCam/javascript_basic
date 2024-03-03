@@ -145,3 +145,33 @@ var filterCourses = courses.filter2(function(course, index, array){
 })
 
 //value types and reference type: xem mảng mới, mảng cũ...
+
+//My some() method: tối hiểu có ptu nào như đk
+//không lọc qua empty
+Array.prototype.some2 = function(callback){
+    var output = false;
+    for (var index in this){
+        if (this.hasOwnProperty(index)){
+            if(callback(this[index], index, this))//this là chính array của mình
+                return true;
+        }
+    }
+    return false;
+}
+
+var courses = [
+    {
+        name: 'Javascript',
+        coin: 680,
+        isFinish:true
+    },
+    {
+        name: 'Python',
+        coin: 680,
+        isFinish:false,
+    }
+]
+
+var result = courses.some(function(course, index){
+    return ;
+})
