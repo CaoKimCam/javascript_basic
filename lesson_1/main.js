@@ -81,3 +81,21 @@ var htmls = courses.map2(function(course, index){
 });
 console.log(htmls.join(''));
 //kết quả nhận được y như map
+
+//
+
+var courses = [
+    'javascript',
+    'PHP',
+    'Ruby'
+]
+//không phải lúc nào độ dài cũng tượng trưng cho số lượng ptu
+//gán course.length=10 thì length sẽ in ra 10
+//do đó lặp = vòng lặp ta nên dùng for in
+for (var index in courses){
+    //for in chỉ lặp lại những phần tử thực
+}//còn for thường, sẽ lập length lần
+
+// var courses = new Array(10): mảng trống, gán đọ dài 10
+// var courses = new Array(10,2):được hiểu là 2 ptu của mảng
+
