@@ -18,3 +18,11 @@ var json='{"name":"Son dang", "age":18}'
 var a='1';
 JSON.parse(a);
 JSON.stringify(true);//chuyển thành chuỗi
+
+//Promise(sync, async)
+// Sync
+
+// async: setTimeout, setInterval, fetch, XMLHttpRequest,
+//request animation frame
+//khi nào các ... trên xong, javascript đều cung cấp để biết
+
