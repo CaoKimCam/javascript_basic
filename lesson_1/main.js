@@ -25,4 +25,26 @@ JSON.stringify(true);//chuyển thành chuỗi
 // async: setTimeout, setInterval, fetch, XMLHttpRequest,
 //request animation frame
 //khi nào các ... trên xong, javascript đều cung cấp để biết
+setTimeout(function() {
+    console.log('Dòng này sẽ in ra sau')
+}, 0)
+// setTimeout là tác vụ bất động bộ (async)
 
+console.log('Dòng này sẽ in ra trước') // Đây là tác vụ đồng bộ (sync)
+
+//Promise(pain)
+
+//Callback hell: khi sử dụng callback
+//Pyramid of doom: code đi vào bế tắt
+setTimeout(function(){
+    console.log(1);//viec 1
+    setTimeout(function(){
+        console.log(2);//viec 2
+        setTimeout(function(){
+            console.log(1);//viec 3
+            setTimeout(function(){
+                console.log(1);//viec 4
+            },1000)
+        },1000)
+    },1000)
+},1000)//output: 1,2,3,4
