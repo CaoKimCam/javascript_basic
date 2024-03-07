@@ -34,6 +34,12 @@ console.log('Dòng này sẽ in ra trước') // Đây là tác vụ đồng b�
 
 //Promise(pain)
 
+/**
+ * Promise có 3 trạng thái:
+Pending
+Fulfilled
+Rejected
+ */
 //Callback hell: khi sử dụng callback
 //Pyramid of doom: code đi vào bế tắt
 setTimeout(function(){
@@ -48,3 +54,33 @@ setTimeout(function(){
         },1000)
     },1000)
 },1000)//output: 1,2,3,4
+
+//Promise(concept)
+
+var promise = new Promise(
+    //Executor
+    function(resole, reject){
+    //Logic
+    //thành công: resolve()
+    //thất bại: reject()
+
+    // Fake call API
+    resole();
+});
+//giải quyết callback hell
+promise
+    .then(function(){
+        //resole được gọi
+    })
+    .catch(function(){
+        //reject được gọi
+    })
+    .finally(function(){
+        //đều lọt vào finally
+    })
+
+//xử lý bất đồng bộ, khắc phục callback hell
+//new Promise, trong constructor truyền executor function nhận 2 tham số: resole, reject dạng hàm
+//resole thành công, reject khi thất bại
+//đối tượng promise được tạo ra, dùng .then .catch (đều nhận những callback function)
+//.then khi thành công, .catch khi thất bại
