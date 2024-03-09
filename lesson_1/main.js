@@ -84,3 +84,65 @@ promise
 //resole thành công, reject khi thất bại
 //đối tượng promise được tạo ra, dùng .then .catch (đều nhận những callback function)
 //.then khi thành công, .catch khi thất bại
+
+//Promise(chain)
+//Promise có 3 trạng thái: pending, fulfilled, rejected
+//callback hell: phần trong phải chờ phần ngoài chạy(do cần dữ liệu của cái bên ngoài)
+promise
+    .then(function(data){
+        //resole1 được gọi
+        return 1;
+    })
+    .then(function(data){
+        //resole2 được gọi
+        console.log(data);
+        return 2;
+    })
+    .catch(function(){
+        //reject được gọi
+        console.log(data);
+        return 3;
+    })
+    .finally(function(){
+        //đều lọt vào finally
+    })
+//sẽ output 1 2 3 (println)
+//-> giải quyết được bài toán callback
+//nếu không return ra promise thì nó sẽ chạy then liền kề
+//nếu return ra promise: chờ promise được giải quyết mới chạy tiếp
+promise
+    .then(function(data){
+        //resole1 được gọi
+        return new Promise(function(resole){
+            setTimeout(resole, 3000);
+        })
+    })
+    .then(function(data){
+        //resole2 được gọi
+        console.log(data);
+        return 2;
+    })
+    .catch(function(){
+        //reject được gọi
+        console.log(data);
+        return 3;
+    })
+    .finally(function(){
+        //đều lọt vào finally
+    })
+
+    function sleep(ms){
+        return new Promise(function(resole){
+            setTimeout(resole,ms);
+        })
+    }
+
+    sleep(1000)
+        .then(function(){
+            console.log(1);
+            return sleep(1000);
+        })
+        .then(function(){
+            console.log(2)
+            return sleep(1000);
+        })
