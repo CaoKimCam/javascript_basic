@@ -66,3 +66,45 @@ fetch(courseApi)
 
 // Postman: CRUD qua đây, như làm việc với API thật
 
+
+
+// Thêm/sửa/xóa khóa học với Fetch và REST API
+//ví dụ: thêm sửa xoá khoá học
+
+
+
+var courseApi=''//biến để lưu api: như localhost:3000/courses
+
+function start(){
+    // getCourses(function(courses){
+    //     renderCourses(courses);
+    // });//sau khi getcourses thì rendercourse
+    //tôi ưu code trên:
+    getCourses(renderCourses)
+}
+
+start();
+
+//Functions
+function getCourses(callback){//lấy ra khoá học
+    fetch(courseApi)
+        .then(function(response){
+            return response.json()
+        })
+        // .then(function(response){}): cách 1
+        .then(callback);
+
+}
+function renderCourses(courses){
+    var listCoursesBlock=document.querySelector('#list-courses');
+    var htmls= courses.map(function(course){
+        return `
+            <li>
+                <h4>${course.name}</h4>
+                <p>${course.description}</p>
+            </li>
+        `
+    });
+    listCoursesBlock.innerHTML=htmls.join('');
+}
+//đọc lại: difficult
