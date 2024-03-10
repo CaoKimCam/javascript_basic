@@ -100,9 +100,10 @@ function renderCourses(courses){
     var listCoursesBlock=document.querySelector('#list-courses');
     var htmls= courses.map(function(course){
         return `
-            <li>
+            <li class="course-item-${course.id}">
                 <h4>${course.name}</h4>
                 <p>${course.description}</p>
+                <button onclick="handleDeleteCourse(${course.id})">&time;</button>
             </li>
         `
     });
@@ -120,7 +121,7 @@ function createCourse(data, callback){
     };
     fetch(courseApi, options)
         .then(function(response){
-
+            response.json();
         })
         .then(callback)
 }
@@ -140,4 +141,22 @@ function handleCrateForm(){
             getCourses(renderCourses);
         });
     })
+}
+
+function handleDeleteCourse(id){
+    var options ={
+        method: 'DELETE',
+        headers:{},//nhớ thêm header vào
+        body: JSON.stringify(data),
+    };
+    fetch(courseApi+'/'+id, options)
+        .then(function(response){
+            response.json();
+        })
+        .then(function(){
+            var courseItem=document.querySelector('.course-item-'+id);
+            if (courseItemm){
+                courseItem.remove();//xoá khỏi dom//không cần render lại
+            }
+        })
 }
