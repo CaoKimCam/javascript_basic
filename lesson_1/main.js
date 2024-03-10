@@ -81,6 +81,7 @@ function start(){
     // });//sau khi getcourses thì rendercourse
     //tôi ưu code trên:
     getCourses(renderCourses)
+    handleCrateForm();
 }
 
 start();
@@ -108,3 +109,35 @@ function renderCourses(courses){
     listCoursesBlock.innerHTML=htmls.join('');
 }
 //đọc lại: difficult
+
+//cách search: fetch mozilla hoặc w3school... method POSTS...
+
+function createCourse(data, callback){
+    var options ={
+        method: 'POST',
+        headers:{},//nhớ thêm header vào
+        body: JSON.stringify(data),
+    };
+    fetch(courseApi, options)
+        .then(function(response){
+
+        })
+        .then(callback)
+}
+
+function handleCrateForm(){
+    var createBtn=document.querySelector('#create')
+    createBtn.onclick(function(){
+        var name = document.querySelector('input[name="name"]').nodeValue;
+        var description=document.querySelector('input[name="description"]').nodeValue;
+        
+        var formData={
+
+            name: name,
+            description: description
+        }
+        createCourse(formData, function(){
+            getCourses(renderCourses);
+        });
+    })
+}
