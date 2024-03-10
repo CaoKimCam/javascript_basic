@@ -60,3 +60,9 @@ fetch(courseApi)
     })
 
 
+// Sử dụng Postman làm việc với REST API:
+// https://fullstack.edu.vn/learning/javascript-co-ban?id=61546753-d397-43ef-b948-ec7f3b3fd880
+// API server(Fake)/Mock API
+
+// Postman: CRUD qua đây, như làm việc với API thật
+
