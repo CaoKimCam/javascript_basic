@@ -41,3 +41,22 @@ fetch(postApi)
         document.getElementById('post-block').innerHTML=html
     })
 
+
+
+    //JSON server
+    // https://fullstack.edu.vn/learning/javascript-co-ban?id=5d91ae2c-f665-4b2c-8c8e-11d7f9a6eac9
+//response.json: trả về promise, đã parse về JS type
+//json-server:fake api
+//npm: npmjs, npm được cài kèm khi cài node
+//học nodejs để hướng dẫn cài đặt npm
+
+var courseApi='local của json server fake api vừa tạo'
+fetch(courseApi)
+    .then(function(response){
+      response.json()  
+    })
+    .then(function(courses){
+
+    })
+
+
