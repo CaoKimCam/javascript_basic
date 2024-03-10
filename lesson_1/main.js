@@ -160,3 +160,6 @@ function handleDeleteCourse(id){
             }
         })
 }
+
+// https://fullstack.edu.vn/learning/javascript-co-ban?id=468f2344-7c11-40d2-8492-8dd89f99d444
+// đọc lại code
