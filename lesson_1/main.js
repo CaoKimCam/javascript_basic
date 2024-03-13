@@ -45,3 +45,23 @@ console.log(a.name);
 // //không có thì dùng const
 
 // End: let & const   
+
+// Template literals
+
+const courseName='Javascript'
+const description = 'Course name:' + courseName;
+
+// template string: kiểu nội suy
+const description1 = `Course name: ${courseName}`;
+
+// Muốn viết \ phải viết \\
+//Muốn viết ${} phải viết \${}
+
+// Before:
+const lines='Line1\n'+'Line2\n';
+
+// After:
+const lines_before=`Line1
+Line2
+Line3`;
+
