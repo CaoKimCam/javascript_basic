@@ -65,3 +65,73 @@ const lines_before=`Line1
 Line2
 Line3`;
 
+// End: template string
+
+// Arrow function
+
+// Before:
+function logger(log){
+
+}
+
+// After:
+const logger2=(log)=>{
+
+}
+
+logger('Message...');
+
+// Before:
+const sum=(a,b)=>{
+    return a+b;
+}
+
+// After:
+const sum_after=(a,b)=>a+b;
+
+// nếu viết sau => tự động hiểu là return
+
+// nếu viết =>{} thì phải viết return như thường
+// nhưng đối với trường hợp return object
+
+const sum_after1=(a,b) => ({a:a,b:b});//return luôn 1 object
+
+// arrow function chỉ có 1 đối số, có thể bỏ ngoặc
+
+// Before:
+
+const bai1=(log)=>console.log(log);
+
+// After:
+
+const bai2= log =>console.log(log);
+
+//this: context
+
+// Before:
+
+const courses={
+    name:'Javascript',
+    getName: function(){
+        return this;//this này là courses, đối tượng gọi tới
+    }
+}
+
+// After:
+
+const courses2={
+    name:'Javascript',
+    getName:()=>{
+        return this;//sẽ log ra undefined, không có context
+    }
+}
+
+// Arrow function không được dùng để tạo constructor
+
+const coursess=function(name, price){
+    this.name=name;
+    this.price=price;
+}
+// nếu dùng arrow sẽ có lỗi không có constructor
+
+// End: arrow function
