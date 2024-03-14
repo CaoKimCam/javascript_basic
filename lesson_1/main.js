@@ -123,3 +123,73 @@ console.log(1,2,3,4,5,6,7,8,9,10,11,12)
 
 
 // End: Destructuring, Rest
+
+
+
+function logger(...parameters) {
+    console.log(parameters);
+}
+
+logger(1,2,3,4);
+// rest lấy ra phần còn lại
+
+function logger(a,b,...parameters) {
+    // có thể làm việc với toán tử a, b, parameters
+}
+
+// vd2 cho dùng rest
+function logger({name, price}){}
+
+// name, price thuộc object
+
+// Start: Spread
+var array1=['Javascript', 'Ruby','PHP'];
+var array2=['ReactJS','Dart'];
+
+var array3= [...array1,...array2];
+// bỏ ngoặc đi và lấy các biến: nối mảng
+
+// có thể dùng để hơp nhất 2 mảng
+var object1={
+    name:'Javascript'
+}
+var object2={
+    price:100
+}
+
+var object3= {
+    ...object1
+    ,...object2
+};
+
+// toán tử spread khi ... nó sẽ bỏ dấu ngoặc với array hoặc object
+var array1= ['Javascript', 'Ruby']
+var array2=['Php','Dart'];
+
+var array3= [...array1,...array2];
+// sử dụng rất nhiều
+// kết hợp lấy address bài học 1, lấy bài tập address khác
+
+var defaultConfig = {
+    app:'https://domain-trang-khoa-hoc',
+    apiVersion:'v1',
+    other: 'other'
+}
+
+var exerciseConfig ={
+    ...defaultConfig,
+    api:'https://domain-trang-bai-tap'
+}
+
+function logger(...rest){
+    for (var i=0; i<rest.length; i++){
+        console.log(rest[i]);
+    }
+}
+logger(...array);//spread
+// đây là tác dụng hợp nhất 
+// tương tự với object
+// nếu 2 name key trùng nhau, thì sẽ lấy cái hàm định nghĩa sau
+
+// End: Spread
+
