@@ -72,3 +72,54 @@ const course={
 
 // End: Enhanced object literals
 
+// Start: Destructuring (Phân rã), Rest
+
+
+//array
+var array = ['Javascript', 'PHP','Ruby'];
+
+// vd: tạo biến a,b,c lưu giá trị này vào
+//before
+var a=array[0];
+var b=array[1];
+var c=array[2];
+
+//after
+var[a,b,c]=array;
+
+// cách lấy phần tử còn lại, nếu đã lấy ra a
+var [a, ...rest]=array;
+//khi đó rest ra b,c
+
+//object
+var course ={
+    name: 'Javascript',
+    price: 1000
+}
+
+// object có object con
+var course ={
+    name: 'Javascript',
+    price: 1000,
+    children: {
+        name: 'PHP'
+    }
+}
+
+var {name:parentName, children:{name}} = course;
+//đổi tên name khi in ra thành parentName để không bị trùng với name
+
+
+var {name, price}=course;// với object cần đúng name
+var {name, ...rest}=course;
+function logger(...params){
+    console.log(params);
+}
+console.log(rest);
+//sử dụng kết hợp distructuring: toán tử rest(toán tử còn lại)
+
+// trương hợp còn lại là spread
+console.log(1,2,3,4,5,6,7,8,9,10,11,12)
+
+
+// End: Destructuring, Rest
