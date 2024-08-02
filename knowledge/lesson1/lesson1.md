@@ -540,10 +540,162 @@ var languages=[
 
 ---
 
+### 30/7
+
 ### Vòng lặp
 
 1. for - Lặp với đk đúng
 2. for/in - Lặp qua key của đối tượng
+
+- dùng lấy ra những key của những đối tượng
+  ![Alt text](image-22.png)
+  - Mỗi lần chạy nó sẽ lấy ra key dưới dạng chuỗi:
+    ![Alt text](image-23.png)
+    -> truyền key vào có thể lấy ra value luôn
+  - có thể tách 1 từ ra nhiều chữ cái
+    ![Alt text](image-24.png)
+
 3. for/of - Lặp qua value của đối tượng
+
+- ứng dụng với mảng: để lấy value
+  ![Alt text](image-25.png)
+- cũng có thể lấy ký tự chuỗi như for/in
+- đối với đối tượng: -> đổi thành mảng
+  ![Alt text](image-26.png)
+  ![Alt text](image-27.png)
+  - Cách 2:
+    ![Alt text](image-28.png)
+
 4. while - Lặp khi điều kiện đúng
-5. do/whilel - Lặp ít nhất 1 lần, sau đó lặp khi điều kiện đúng
+
+5. do/while - Lặp ít nhất 1 lần, sau đó lặp khi điều kiện đúng
+   ![Alt text](image-29.png)
+
+---
+
+1. Break và continous
+
+- Break nếu muốn thoát khỏi vòng lặp
+- Continous nếu muốn bỏ qua 1 vài vòng của vòng lặp
+
+2. Vòng lặp lồng nhau (Nested Loop)
+
+3. Đệ quy
+
+- Đệ quy là hàm tự gọi lại chính nó
+- Cách giải quyết bài toán: Cho mảng 1, 2 loại bỏ các phần tử trùng lặp của mảng 1 và 2
+  - Cách 1: Dùng Set (mỗi phần tử unique)
+    ![Alt text](image-30.png)
+- Ví dụ dùng đệ quy:
+  ![Alt text](image-31.png)
+- Ví dụ dùng đệ quy tính giai thừa:
+  ![Alt text](image-32.png)
+  ![Alt text](image-33.png)
+
+---
+
+### Làm việc với mảng - Phần 2
+
+1. forEach()
+
+- duyệt qua từng phần tử của mảng
+- truyền 1 hàm qua tham số (đgl callback)
+  myArray.forEach(function(){
+
+});
+![Alt text](image-34.png)
+
+2. every()
+
+- hữu ích khi muốn kiểm tra `tất cả` các phần tử của mảng phải thoả mãn điều kiện gì đó.
+  -> trả về kiểu Boolean
+  ![Alt text](image-35.png)
+
+3. some()
+
+- chỉ cần 1 phần tử trong mảng đúng thì sẽ trả về đúng
+
+4. find()
+
+- trả về chính phần tử đó nếu tìm được, return chỉ trả về 1 phần tử
+  ![Alt text](image-36.png)
+
+5. filter()
+
+- trả về các phần tử thoả mãn điều kiện
+  ![Alt text](image-37.png)
+  ![Alt text](image-38.png)
+
+6. map()
+
+- khi muốn thay đổi các element của 1 array
+- sẽ trả về số lượng phần tử bằng ban đầu
+- trong map này nó đang thực hiện vòng lặp, mỗi khi lặp nó gọi lại 1 function được truyền vào
+  - Khi không truyền gì vào hàm
+    ![Alt text](image-39.png)
+- Bài toán: giả sử khi ta muốn thêm trường coinText cho tất cả, thêm 'Khoa hoc' trước name
+  ![Alt text](image-40.png)
+- ngoài ra có thể truyền index
+  ![Alt text](image-41.png)
+- ngoài ra còn có thể trả về originArray
+  ![Alt text](image-42.png)
+- Ví dụ: render chỉ lấy course name
+  ![Alt text](image-43.png)
+
+7. reduce()
+
+- Mong muốn nhận về 1 giá trị duy nhất
+  - Ví dụ muốn nhận về tổng số coin
+    ![Alt text](image-44.png)
+    - Kiểm tra cụ thể hơn:
+      ![Alt text](image-45.png)
+    - Cách viết ngắn gọn hơn và dùng arrow function:
+      ![Alt text](image-46.png)
+  - Nếu không dùng reduce, ta có thể dùng vòng lặp
+  - Tham số truyền vào: function, biến lưu trữ (accumlator)...
+    function coinandler(accumlator, currentValue, currentIndex, originArray){}
+  - Biến lưu trữ là accumlator, lần đầu truyền bao nhiêu thì accumlator lần đầu sẽ có giá trị đó, các lần sau nó nhận giá trị return của hàm
+  - currentValue theo đúng currentIndex
+- Trong hàm reduce, tham số thứ 2 sau hàm callback là initialValue
+
+### 2/8/24
+
+---
+
+### Ví dụ reduce() method
+
+- InitialValue là tham số không bắt buộc
+  - Tuy nhiên khi không có initialValue thì nó sẽ lấy giá trị đầu tiên làm giá trị khởi tạo, currentValue vòng đầu sẽ là phần tử thứ 2 (giảm đi 1 vòng chạy của function)
+    ![Alt text](image-47.png)
+  - Không phải bài toán nào cũng có thể bỏ đi tham số initialValue (điển hình như bài toán trước tính tổng, ta cần dữ liệu number chứ không phải object)
+- Thực tế, mong muốn nhận được kiểu dữ liệu gì thì ta đặt initialValue bằng kiểu đó
+- Flat - "Làm phẳng" mảng từ Depth array - "Mảng sâu"
+  var depthArray=[1,2,[3,4],5,6,[7,8,9]]
+  ![Alt text](image-48.png)
+- Lấy ra các khoá học đưa vào mảng mới
+  - Đề:
+    ![Alt text](image-49.png)
+  - Cách giải: tương tự bài trên
+    ![Hình ảnh minh hoạ cách lấy ra các khoá học trong topic](image-50.png)
+- Tự tạo ra phương thức reduce
+  - Reduce nhận 2 đối số: callback (bắt buộc), initialValue
+  - Để định nghĩa phương thức mới cho Array:
+    Array.prototypes.reduce2
+    - khi không truyền initialValue
+      ![Alt text](image-51.png)
+    - truyền initialValue: kiểm tra tham số truyền vào (= cách dùng arguments)
+
+---
+
+### String/ Array includes() method
+
+- Ví dụ cơ bản sử dụng với chuỗi
+  ![Alt text](image-52.png)
+- Ví dụ sử dụng với array
+  ![Alt text](image-53.png)
+- Có đối số thứ 2: vị trí bắt đầu tìm kiếm từ
+  - Khi truyền đối số là số âm (ví dụ -1): nó sẽ tìm từ length + (-1), (-1) là số truyền vào
+
+---
+
+# Callback?
