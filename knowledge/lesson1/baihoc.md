@@ -698,4 +698,32 @@ var languages=[
 
 ---
 
+# 3/8/24
+
 # Callback?
+
+- Là hàm được truyền qua đối số khi gọi hàm khác
+  ![Hình ảnh minh hoạ 1 callback](image-54.png)
+- Một số lưu ý với array
+  - Không phải lúc nào tính length cũng là tổng số độ dài phần tử có tồn tại trong mảng
+    ![Alt text](image-56.png)
+    ![Alt text](image-58.png) - Nếu đưa 2 số, nó không còn là length mà là phần tử
+    ![Alt text](image-59.png)
+    -> Giải quyết: sử dụng vòng lặp for in (do nó chỉ quan tâm index)
+    ![Alt text](image-57.png)
+- My map function
+  ![Hình ảnh minh hoạ My map function](image-55.png)
+- My forEach() method
+
+  - dùng vòng lặp for in (để chỉ quan tâm index) -> không chỉ duyệt ra element mảng mà còn element trong proto
+    -> kiểm tra index có phải của thuộc tính gần nhất không? this.hasOwnProperty(index)
+    ![Alt text](image-60.png)
+  - My forEach() method
+    ![Alt text](image-61.png)
+
+- My filter() method
+  ![Alt text](image-62.png)
+- My some() method
+  ![Alt text](image-63.png)
+- My every() method
+  ![Alt text](image-64.png)
