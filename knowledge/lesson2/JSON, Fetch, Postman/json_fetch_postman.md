@@ -79,3 +79,13 @@
 ---
 
 ### Promise methods (resolve, reject, all)
+
+- khi đang thực hiện nhiều then mà có 1 promise bị reject thì nó sẽ không thực hiện các vòng then sau, nó sẽ chuyển qua catch
+- promise all khi 2 promise chạy song song riêng lẻ, ta cần kết quả sau khi chạy hoàn tất của cả 2 promise
+- vẫn có Promise hell -> chưa giải quyết hoàn toàn callback hell
+
+---
+
+### 14/8/24
+
+### Fetch

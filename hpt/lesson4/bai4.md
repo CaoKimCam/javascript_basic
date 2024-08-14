@@ -198,3 +198,26 @@
 ### Object prototype
 
 - nguyên mẫu
+- có thể thêm phương thức và thuộc tính qua prototype
+
+### Math object:
+
+- các phương thức:
+- Math.round()
+- Math.abs()
+- Math.ceil()
+  -> khi thập phân > 0, sẽ làm tròn trên
+- Math.floor(): luôn làm tròn dưới
+- Math.random()
+- Math.min()
+- Math.max()
+
+### Làm việc với mảng phàn 2
+
+- forEach: duyệt qua từng phần tử
+- every: tất cả
+- some
+- find
+- filter
+- map
+- reduce
