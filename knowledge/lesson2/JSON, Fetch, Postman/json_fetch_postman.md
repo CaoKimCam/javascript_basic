@@ -89,3 +89,11 @@
 ### 14/8/24
 
 ### Fetch
+
+- API?
+- fetch
+  - cách làm việc để gọi api
+- JSON server
+  - a full fake REST API
+  - API Server (fake)/ Mock API
+- Postman làm việc với REST API

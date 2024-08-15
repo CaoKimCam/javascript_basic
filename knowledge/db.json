@@ -1,0 +1,14 @@
+{
+  "courses": [
+    {
+      "id": "1",
+      "name": "Kiến thức cơ bản tổng quan",
+      "description": "Khoá học dành cho người mới bắt bắt đầu!"
+    },
+    {
+      "id": "2",
+      "name": "Javascript cơ bản",
+      "description": "Khoá học dành cho beginner lập trình web"
+    }
+  ]
+}
