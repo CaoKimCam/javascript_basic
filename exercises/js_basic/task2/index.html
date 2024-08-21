@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div>
+
+    </div>
+    <script>
+        /**
+         * 1. Render songs
+         * 2. Sccroll top
+         * 3. Play/ pause/ stop
+         * 4. CD rotate
+         * 5. Next/ Previous
+         * 6. Random
+         * 7. Next/ Repeat when ended
+         * 8. Active song
+         * 9. Scroll active song into view
+         * 10. Play song when click
+         */
+
+        const $ = document.querySelector.bind(document)
+        const $$ = document.querySelectorAll.bind(document)
+        const app = {
+            songs: [],
+            render: function () {
+                const htmls = this.songs.map(song => {
+                    return `
+                        <div class="song">
+                            <div class="thumb"
+                                style="background-image: url('${song.image}')">
+                            </div>
+                            <div class="body">
+                                <h3 class="title">${song.name}</h3>
+                                <p class="author">${song.singer}</p>
+                            </div>
+                            <div class="option">
+                                <i class="fas fa-ellipis-h"></i>
+                            </div>
+                        </div>
+                    `
+
+                })
+            },
+            start: function () {
+                this.render()
+            }
+        }
+    </script>
+</body>
+
+</html>

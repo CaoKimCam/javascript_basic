@@ -6,6 +6,9 @@
 
 ### Khái niệm
 
+- DOM? Document Object Model
+  - Là quy chuẩn của W3C đưa ra
+- Khi một trang web được tải, trình duyệt sẽ tạo 1 DOM cho trang web. (dựa trên quy chuẩn W3C từ chuỗi html)
 - Mô hình DOM:
   ![Alt text](image.png)
 - DOM (Document Object Model)
@@ -26,6 +29,8 @@
 
 ### Document object
 
+- đại diện cho cả website
+  => để truy cập các node, luôn phải đi qua document
 - document.write('HELLO GUYS'): ghi vào 1 chuỗi
   ![Alt text](image-1.png)
 
@@ -66,7 +71,7 @@
 
 - thêm attribute bên ngoài: dùng setAttribute
   ![Hình minh hoạ](image-4.png)
-- có thể get attribute cả vừa thêm, cả sẵn trong html
+- có thể get attribute cả vừa thêm, và cả có sẵn trong html
   ![Alt text](image-5.png)
 
 ---
