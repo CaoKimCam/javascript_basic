@@ -4,55 +4,87 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="./stylemain.css">
+
+    <title>Musical</title>
+
+    <script src="https://kit.fontawesome.com/05cacd1f06.js" crossorigin="anonymous"></script>
 </head>
 
 <body>
-    <div>
+    <aside>
+        <div class="logo header">
+            <i class="logo-icon fa-solid fa-compact-disc"></i>
+        </div>
+        <nav>
+            <a href="">
+                <i class="fa-solid fa-house"></i>
+            </a>
+            <a href="">
+                <i class="fa-solid fa-magnifying-glass"></i>
+            </a>
+            <a href="">
+                <i class="fa-solid fa-heart"></i>
+            </a>
+            <a href="">
+                <i class="fa-solid fa-plus"></i>
+            </a>
+        </nav>
+    </aside>
 
-    </div>
-    <script>
-        /**
-         * 1. Render songs
-         * 2. Sccroll top
-         * 3. Play/ pause/ stop
-         * 4. CD rotate
-         * 5. Next/ Previous
-         * 6. Random
-         * 7. Next/ Repeat when ended
-         * 8. Active song
-         * 9. Scroll active song into view
-         * 10. Play song when click
-         */
+    <section>
+        <div class="search-menu header">
+            <div class="search-input">
+                <i class="search-icon fa-solid fa-magnifying-glass"></i>
+                <input class="search-text" type="text" placeholder="Search for song, artist, lyrics,...">
+            </div>
+        </div>
 
-        const $ = document.querySelector.bind(document)
-        const $$ = document.querySelectorAll.bind(document)
-        const app = {
-            songs: [],
-            render: function () {
-                const htmls = this.songs.map(song => {
-                    return `
-                        <div class="song">
-                            <div class="thumb"
-                                style="background-image: url('${song.image}')">
-                            </div>
-                            <div class="body">
-                                <h3 class="title">${song.name}</h3>
-                                <p class="author">${song.singer}</p>
-                            </div>
-                            <div class="option">
-                                <i class="fas fa-ellipis-h"></i>
-                            </div>
-                        </div>
-                    `
+        <div class="main-content">
+            <h4 class="main-content-text">Your Playlist</h4>
 
-                })
-            },
-            start: function () {
-                this.render()
-            }
-        }
-    </script>
+            <div class="playlist">
+
+            </div>
+        </div>
+    </section>
+    <article>
+        <div class="header"></div>
+        <div class="player">
+            <div class="cd">
+                <div class="cd-thumbnail" style="background-image: url('./image/ChieuHomAy.jpg');"></div>
+            </div>
+            <div class="playing-song">
+                <h5 class="playing-song-name">Chiều hôm ấy</h5>
+                <p class="playing-song-artist">JayKii</p>
+            </div>
+            <input id="progress" class="progress" type="range" value="0" step="1" min="0" max="100">
+            <div class="controls">
+                <div class="btn btn-repeat">
+                    <i class="fa-solid fa-rotate"></i>
+                </div>
+                <div class="btn btn-prev">
+                    <i class="fa-solid fa-backward"></i>
+                </div>
+                <div class="btn btn-toggle-play">
+                    <i class="icon-play fa-solid fa-circle-play"></i>
+                    <i class="icon-pause fa-solid fa-circle-pause"></i>
+                </div>
+                <div class="btn btn-next">
+                    <i class="icon-next fa-solid fa-forward"></i>
+                </div>
+                <div class="btn btn-shuffle">
+                    <i class="icon-shuffle fa-solid fa-shuffle"></i>
+                </div>
+            </div>
+            <audio id="audio" src=""></audio>
+        </div>
+    </article>
+
+    <script src="./main.js"></script>
 </body>
 
 </html>
