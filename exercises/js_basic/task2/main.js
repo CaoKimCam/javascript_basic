@@ -46,6 +46,7 @@
              isFavorite: false,
          },
          {
+             index:1,
              name: 'Chiụ cách mình nói thua',
              singer: 'Rhyder',
              path: "./music/ChiuCachMinhNoiThua.mp3",
@@ -53,7 +54,7 @@
              isFavorite: false,
          },
          {
-             index: 1,
+             index: 2,
              name: 'Không phải gu',
              singer: 'HIEUTHUHAI',
              path: "./music/KhongPhaiGu.mp3",
@@ -61,7 +62,7 @@
              isFavorite: false,
          },
          {
-             index: 2,
+             index: 3,
              name: 'Không Thể Say',
              singer: 'HIEUTHUHAI',
              path: "./music/KhongTheSay.mp3",
@@ -69,7 +70,7 @@
              isFavorite: false,
          },
          {
-             index: 3,
+             index: 4,
              name: 'MONGYU',
              singer: 'AMEE&MCK',
              path: "./music/MONGYU.mp3",
@@ -77,7 +78,7 @@
              isFavorite: false,
          },
          {
-             index: 4,
+             index: 5,
              name: 'Rồi ta sẽ ngắm pháo hoa cùng nhau',
              singer: 'Olew',
              path: "./music/RoiTaSeNgamPhaoHoaCungNhau.mp3",
@@ -85,7 +86,7 @@
              isFavorite: false,
          },
          {
-             index: 5,
+             index: 6,
              name: 'Sài Gòn đau lòng quá',
              singer: 'Hứa Kim Tuyền',
              path: "./music/SaiGonDauLongQua.mp3",
@@ -93,7 +94,7 @@
              isFavorite: false,
          },
          {
-             index: 6,
+             index: 7,
              name: 'Sài Gòn hôm nay mưa',
              singer: 'Jsol & Hoàng Duyên',
              path: "./music/SaiGonHomNayMua.mp3",
@@ -119,7 +120,7 @@
 
                 <div class="song-contain song-select">
                     <div>
-                        <i class="song-favorite-${index} btn song-favorite fa-regular fa-heart"></i>
+                        <i class="song-favorite-${index} btn song-favorite fa-heart ${song.isFavorite == true ? 'fa-solid' : 'fa-regular'}"></i>
                         <i class="btn song-remove-${index} fa-solid fa-xmark" onclick="handleRemove(event)"></i>
                     </div>
                 </div>
@@ -268,14 +269,19 @@
         // Lắng nghe hành vi click vào playlist
         playlist.onclick= function(event){
             const songNode = event.target.closest('.song:not(.active)');
-            if (event.target.closest('.song:not(.active)')){
+            if (event.target.closest('.song:not(.active)')||event.target.closest('.song-favorite')){
                 if (event.target.closest('.song-favorite')){
                     _this.handleFavoriteIcon(event)
-                } else{
-                    _this.currentIndex=Number(songNode.dataset.index)
-                    _this.loadCurrentSong()
-                    audio.play()
-                    _this.render()
+                } else {
+                    if (event.target.closest('.song-remove')){
+                        _this.handleRemoveIcon(event)
+                    }
+                    else {
+                        _this.currentIndex=Number(songNode.dataset.index)
+                        _this.loadCurrentSong()
+                        audio.play()
+                        _this.render()
+                    }
                 }
                 
             } 
@@ -336,15 +342,17 @@
      },
      handleFavoriteIcon:function(event) {
         const favoriteBtn = event.target
-        console.log(favoriteBtn)
-        if (event.target.color==="#ff3c63"){
-            console.log(1)
+        const songFavoriteIndex = Number(favoriteBtn.closest('.song').dataset.index)
+        if (favoriteBtn.classList.contains('fa-regular')){
+            console.log(songFavoriteIndex)
             favoriteBtn.classList.add('fa-solid')
             favoriteBtn.classList.remove('fa-regular')
+            this.songs[songFavoriteIndex].isFavorite=true
         } 
         else{
             favoriteBtn.classList.remove('fa-solid')
             favoriteBtn.classList.add('fa-regular')
+            this.songs[songFavoriteIndex].isFavorite=false
         }
         
      },
