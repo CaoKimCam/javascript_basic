@@ -121,7 +121,7 @@
                 <div class="song-contain song-select">
                     <div>
                         <i class="song-favorite-${index} btn song-favorite fa-heart ${song.isFavorite == true ? 'fa-solid' : 'fa-regular'}"></i>
-                        <i class="btn song-remove-${index} fa-solid fa-xmark" onclick="handleRemove(event)"></i>
+                        <i class="btn song-remove song-remove-${index} fa-solid fa-xmark"></i>
                     </div>
                 </div>
             </div>
@@ -269,7 +269,7 @@
         // Lắng nghe hành vi click vào playlist
         playlist.onclick= function(event){
             const songNode = event.target.closest('.song:not(.active)');
-            if (event.target.closest('.song:not(.active)')||event.target.closest('.song-favorite')){
+            if (event.target.closest('.song:not(.active)')||event.target.closest('.song-favorite')||event.target.closest('.song-remove')){
                 if (event.target.closest('.song-favorite')){
                     _this.handleFavoriteIcon(event)
                 } else {
@@ -356,8 +356,13 @@
         }
         
      },
-     handleRemoveIcon:function(){
-
+     handleRemoveIcon:function(event){
+        const removeBtn = event.target
+        console.log(removeBtn)
+        const songIndex = Number(removeBtn.closest('.song').dataset.index)
+        console.log(songIndex)
+        this.songs.splice(songIndex, 1)
+        this.render()
      }
      ,
      start: function () {
