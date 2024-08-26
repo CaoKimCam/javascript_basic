@@ -1,3 +1,6 @@
 ### Object.defineProperty
 
 - define property directly on an object, or modifies an existing property on an object, and returns the object.
+- closest
+- audio events
+- delegate
