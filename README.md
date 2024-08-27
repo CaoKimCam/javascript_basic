@@ -9,3 +9,7 @@ Link course: https://fullstack.edu.vn/learning/javascript-co-ban?id=29c80d84-3f5
 ### Resume
 
 - knowledge in f8: note appproximately full
+
+### Check lại
+
+- Form (part2)
