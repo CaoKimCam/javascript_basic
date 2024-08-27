@@ -105,3 +105,13 @@
     margin-top: 36px;
   }
   
+  /* More */
+  .radio{
+    display: flex;
+    align-items: center;
+  }
+
+  .mr20{
+    margin-left: 20px;
+    font-size: 10px;
+  }
