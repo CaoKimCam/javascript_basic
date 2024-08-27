@@ -3,25 +3,46 @@ function Validator(options){
 
     var selectorRules={};
 
+    function getParent(element, selector){
+        while(element.parentElement){
+            if(element.parentElement.matches(selector)){
+                return element.parentElement
+            }
+            element=element.parentElement
+        }
+    }
     function validate(inputElement, rule){
         var errorMessage
-        var errorElement = inputElement.parentElement.querySelector(options.errorSelector)
+        var errorElement = getParent(inputElement, options.formGroupSelector).querySelector(options.errorSelector)
         
         // Lấy ra các rules của selector
         var rules = selectorRules[rule.selector];
 
         // Lặp qua từng rules và kiểm tra
         // Nếu có lỗi thì dừng việc kiểm tra
-        for (var i = 0; i < rules.length; i++){
-            errorMessage=rules[i](inputElement.value)
+        for (var i = 0; i < rules.length; ++i){
+            switch(inputElement.type){
+                case 'radio':
+                case 'checkbox':
+                    errorMessage=rules[i](
+                        formElement.querySelector(rule.selector+':checked')
+                    )
+                    console.log(rules[i](
+                        formElement.querySelector(rule.selector+':checked')
+                    ))
+                    break;
+                default:
+                    errorMessage=rules[i](inputElement.value)
+            }
+            
             if(errorMessage) break;
         }
         if (errorMessage){
             errorElement.innerText = errorMessage;
-            inputElement.parentElement.classList.add('invalid')
+            getParent(inputElement, options.formGroupSelector).classList.add('invalid')
         } else{
             errorElement.innerText = '';
-            inputElement.parentElement.classList.remove('invalid')
+            getParent(inputElement, options.formGroupSelector).classList.remove('invalid')
         }
 
         return !!errorMessage;
@@ -82,8 +103,9 @@ function Validator(options){
 
                 // Xử lý mỗi khi người dùng nhập vào input
                 inputElement.oninput = function(){
-                    options.errorSelector.innerText = '';
-                    inputElement.parentElement.classList.remove('invalid')
+                    var errorElement = inputElement.parentElement.querySelector(options.errorSelector)
+                    errorElement.innerText = '';
+                    getParent(inputElement, options.formGroupSelector).classList.remove('invalid')
                 }
             }
         })
