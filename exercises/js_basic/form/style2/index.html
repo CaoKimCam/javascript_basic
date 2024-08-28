@@ -96,11 +96,11 @@
     <script src="./main.js"></script>
     <script>
         // 1. Mong muốn khi sử dụng thư viện này
-        Validator('#form-1', {
-            onSubmit: function (data) {
-                console.log(data)
-            }
-        });
+        var form = new Validator('#form-1');
+
+        form.onSubmit = function (data) {
+            console.log(data)
+        }
     </script>
 </body>
 

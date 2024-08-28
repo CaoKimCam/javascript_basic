@@ -1,9 +1,6 @@
-function Validator(formSelector, options){
+function Validator(formSelector){
 
-    // Gán giá trị mặc định cho tham số khi định nghĩa (ES5)
-    if (!options){
-        options={}
-    }
+    var _this = this;
 
     function getParent(element, selector){
         while (element.parentElement){
@@ -89,10 +86,11 @@ function Validator(formSelector, options){
         function handleValidate(event){
             var rules = formRules[event.target.name];
             var errorMessage
-            rules.find(function(rule){
+
+            for (var rule of rules){
                 errorMessage = rule(event.target.value);
-                return errorMessage;
-            });
+                if (errorMessage) break;
+            }
 
             if (errorMessage){
                 var formGroup = getParent(event.target, '.form-group')
@@ -135,7 +133,7 @@ function Validator(formSelector, options){
         
         // Khi không có lỗi thì submit form
         if(isValid){
-            if (typeof options.onSubmit === 'function'){
+            if (typeof _this.onSubmit === 'function'){
                 var enableInputs = formElement.querySelectorAll('[name]')
                 var formValues = Array.from(enableInputs).reduce(function(values, input){
                     switch (input.type){
@@ -159,7 +157,7 @@ function Validator(formSelector, options){
                 },{}) 
 
                 // Gọi lại hàm onSubmit và trả về kèm giá trị của form
-                options.onSubmit(JSON.stringify(formValues));
+                _this.onSubmit(JSON.stringify(formValues));
             } 
         }
         else{
