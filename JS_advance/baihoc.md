@@ -238,3 +238,21 @@ console.dir(Function)-> xem các method
 
 - Dúng bind khi muốn ràng buộc ngữ cảnh với một hàm bạn muốn gọi sau
 - Dùng call hoặc apply nếu muốn bind và gọi ngay lập tức
+
+---
+
+### Additional
+
+---
+
+### Pass by value
+
+- Đặc điểm: Gán lại tham số trong hàm, không làm thay đổi biến bên ngoài hàm
+
+### Pass by reference
+
+- Gán lại tham số trong hàm, ngay lập tức biến ngoài hàm cũng thay đổi
+
+# Javascript chỉ là Pass by value
+
+![Alt text](image-17.png)
