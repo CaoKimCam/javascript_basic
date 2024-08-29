@@ -1,7 +1,14 @@
 import storage from "./ultil/storage.js"
 
 const init={
-    todos:storage.get()
+    todos:storage.get(),
+    filter: 'all',
+    filters: {
+        all: ()=>true,
+        active: todo => !todo.completed,
+        completed: todo  => todo.completed
+    },
+    editIndex: null,
 }
 
 const actions ={
@@ -20,6 +27,39 @@ const actions ={
         todo.completed =!todo.completed
         console.log(todo.completed)
         storage.set(todos)
+    },
+    toggleAll({todos}, completed){
+        todos.forEach(todo => {
+            todo.completed = completed
+        });
+    },
+    destroy({todos}, index){
+        todos.splice(index,1)
+        storage.set(todos)
+    },
+    switchFilter(state, filter){
+        state.filter = filter
+    },
+    clearCompleted(state){
+        state.todos = state.todos.filter(state.filters.active)
+        storage.set(state.todos)
+    },
+    startEdit(state, index){
+        state.editIndex = index
+    },
+    endEdit(state, title){
+        if(state.editIndex!==null){
+            if (title){
+              state.todos[state.editIndex].title = title
+            } else{
+                this.destroy(state, state.editIndex)
+            }
+            state.editIndex = null
+            storage.set(state.todos)
+        }
+    },
+    cancelEdit(state){
+        state.editIndex = null
     }
 }
 
