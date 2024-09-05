@@ -23,20 +23,18 @@ export function createStore(reducer){
     return{
         // gắn một component vào 1 phần tử DOM và render nó
         attach(component, root){
-            console.log(1)
             roots.set(root, component)
             render()
         },
         // Kết nối một component với trạng thái,
         // cho phép component truy cập và sử dụng trạng thái của ứng dụng
+        // store -> view
         connect(selector=state=>state){
-            console.log(2)
             return component => (props, ...args)=>
                 component(Object.assign({}, props, selector(state), ...args))
         },
         // cập nhậ trạng thái ứng dụng dựa trên action và render lại giao diện
         dispatch(action, ...args){
-            console.log(3)
             state = reducer(state, action, args)
             render()
         } 
