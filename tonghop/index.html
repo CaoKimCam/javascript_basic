@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Coffee Shop</title>
+    <link rel="stylesheet" href="./style/style.css">
+</head>
+<body id="homepage" style="padding-top: 0 !important;">
+    <header>
+        <!-- <span id="flake0" style="cursor: default; user-select: none; position: absolute; font-family: inherit; font-size: 19px; color: rgb(221, 221, 221); z-index: 1000; left: 226px; top: 561px;">❄</span> -->
+        <section id="banner">
+            <div class="slideshow-container">
+                <div class="mySlides fade">
+                    <div class="numbertext">1 / 3</div>
+                    <img src="./style/banner.jpg" id="title" style="display: block;width: 100%;">
+                    <div class="text">Welcome To Our Coffee Shop</div>
+                </div>
+                <div class="mySlides fade">
+                    <div class="numbertext">2 / 3</div>
+                    <img src="./style//coffee2.jpg" id="title" style="display: block; width:100%">
+                    <div class="text" style="text-align: center;">
+                        We are conveniently located in lower manhattan with plans to expand into Brooklyn in 2013
+                        <br>
+                        292 Union Square West at 13th St. New York, New York 10003
+                        <br>
+                        Telephone: 212.555.5555
+                    </div>
+                </div>
+                <div class="mySlides fade">
+                    <div class="numbertext">3 / 3</div>
+                    <img src="./style//coffee3.jpg" id="title" style="display: block; width:100%">
+                    <div class="text">Bringing you the best coffee flavors from around the world</div>
+                </div>
+            </div>
+            <a class="prev" onclick="plusSlides(-1)">❮</a>
+            <a class="next" onclick="plusSlides(1)">❯</a>
+        </section>
+        <section id="logo">
+
+        </section>
+    </header>
+    <h1 style="margin: 0; padding: 0; background-color: #4b2802; font-size: 4vh; text-align: right; padding-right: 20px; color: #cca45c;">Somewhere Coffee</h1>
+    <div id="main" style="background-color: white;">
+        <div id="menu">
+            <div id="menu-link">
+                <a onclick="ChangeContent('./pages/home.html')" class="active link"><h4>Home</h4></a>
+                <a onclick="ChangeContent('./pages/about.html')" class="link"><h4>About</h4></a>
+                <a onclick="ChangeContent('./pages/location.html')" class="link"><h4>Location</h4></a>
+                <a onclick="ChangeContent('./pages/menu.html')" class="link"><h4>Menu</h4></a>
+                <a onclick="ChangeContent('./pages/contact.html')" class="link"><h4>Contact</h4></a>
+            </div>
+                <div>
+                    <img src="./style/coffee_cup-removebg-preview.png" id="menu-bg">
+                </div>
+        </div>
+        <div id="content" style="width: 67%; border: none; background-color: white;">
+            <iframe id="contentFrame" src="./pages/home.html" width="100%" height="99%" style="padding-top: 1%; border: none;"></iframe>
+        </div>
+    </div>
+    <footer>
+        <div style="color: #cca45c;">
+            Hours | News | Products | Survey | Feedback
+        </div>
+        <div style="color: #cca45c;">
+            &copy;2019
+        </div>
+    </footer>
+    <script>
+        function ChangeContent(url){
+            document.getElementById('contentFrame').src=url;
+            const links = document.querySelectorAll('.link');
+            // Lặp qua từng link và thêm sự kiện click
+            links.forEach(link => {
+                link.addEventListener('click', function (event) {
+                    // Ngăn chặn hành vi mặc định (cuộn đến anchor)
+                    event.preventDefault();
+
+                    // Loại bỏ class 'active' khỏi tất cả các link
+                    links.forEach(item => item.classList.remove('active'));
+
+                    // Thêm class 'active' vào link được nhấn
+                    this.classList.add('active');
+                });
+            });
+        }
+    </script>
+    <script>
+        //slide show
+        let slideIndex =0;
+        showSlides();//GỌi hàm chuyển ảnh slideshow banner tự động sau mỗi 3s;
+
+        function showSlides(){
+            let i;
+            let slides = document.getElementsByClassName("mySlides");
+            for (i = 0; i < slides.length; i++) {
+                slides[i].style.display = "none";
+            }
+            slideIndex++;
+            if (slideIndex > slides.length) {slideIndex = 1}
+            slides[slideIndex-1].style.display = "block";
+            setTimeout(showSlides, 10000); //Thời gian chuyển ảnh banner tự động
+        }
+
+        let slideIndex1 = 1;
+        showSlides1(slideIndex1);//Gọi hàm chuyển ảnh banner khi nhấn Next/Previous hoặc 3 nút tròn chuyển ảnh
+
+        function plusSlides(n) {
+            showSlides1(slideIndex1 += n);
+        }
+
+        function currentSlide(n){
+            showSlides1(slideIndex1=n);
+        }
+
+        function showSlides1(n){
+            let i;
+            let slides = document.getElementsByClassName("mySlides");
+            let dots = document.getElementsByClassName("dot");
+            if (n > slides.length) {slideIndex1 = 1}
+            if (n < 1) {slideIndex1 = slides.length}
+            for (i = 0; i < slides.length; i++) {
+                slides[i].style.display = "none";
+            }
+            for (i = 0; i < dots.length; i++) {
+                dots[i].className = dots[i].className.replace(" active", "");
+            }
+            slides[slideIndex1-1].style.display = "block";
+            dots[slideIndex1-1].className += " active";
+        }
+    </script>
+    <script>
+    // Amount of Snowflakes
+    var snowMax = 35;
+
+    // Snowflake Colours
+    var snowColor = ["#DDD", "#EEE"];
+
+    // Snow Entity
+    var snowEntity = "❄";
+
+    // Falling Velocity
+    var snowSpeed = 0.75;
+
+    // Minimum Flake Size
+    var snowMinSize = 8;
+
+    // Maximum Flake Size
+    var snowMaxSize = 24;
+
+    // Refresh Rate (in milliseconds)
+    var snowRefresh = 50;
+
+    // Additional Styles
+    var snowStyles = "cursor: default; -webkit-user-select: none; -moz-user-select: none; -ms-user-select: none; -o-user-select: none; user-select: none;";
+
+    /*
+    // End of Configuration
+    // ----------------------------------------
+    // Do not modify the code below this line
+    */
+
+    var snow = [],
+        pos = [],
+        coords = [],
+        lefr = [],
+        marginBottom,
+        marginRight;
+
+    function randomise(range) {
+        rand = Math.floor(range * Math.random());
+        return rand;
+    }
+
+    function initSnow() {
+        var snowSize = snowMaxSize - snowMinSize;
+        marginBottom = document.body.scrollHeight - 5;
+        marginRight = document.body.clientWidth - 15;
+
+        for (i = 0; i <= snowMax; i++) {
+            coords[i] = 0;
+            lefr[i] = Math.random() * 15;
+            pos[i] = 0.03 + Math.random() / 10;
+            snow[i] = document.getElementById("flake" + i);
+            snow[i].style.fontFamily = "inherit";
+            snow[i].size = randomise(snowSize) + snowMinSize;
+            snow[i].style.fontSize = snow[i].size + "px";
+            snow[i].style.color = snowColor[randomise(snowColor.length)];
+            snow[i].style.zIndex = 1000;
+            snow[i].sink = snowSpeed * snow[i].size / 5;
+            snow[i].posX = randomise(marginRight - snow[i].size);
+            snow[i].posY = randomise(2 * marginBottom - marginBottom - 2 * snow[i].size);
+            snow[i].style.left = snow[i].posX + "px";
+            snow[i].style.top = snow[i].posY + "px";
+        }
+
+        moveSnow();
+    }
+
+    function resize() {
+        marginBottom = document.body.scrollHeight - 5;
+        marginRight = document.body.clientWidth - 15;
+    }
+
+    function moveSnow() {
+        for (i = 0; i <= snowMax; i++) {
+            coords[i] += pos[i];
+            snow[i].posY += snow[i].sink;
+            snow[i].style.left = snow[i].posX + lefr[i] * Math.sin(coords[i]) + "px";
+            snow[i].style.top = snow[i].posY + "px";
+
+            if (snow[i].posY >= marginBottom - 2 * snow[i].size || parseInt(snow[i].style.left) > (marginRight - 3 * lefr[i])) {
+                snow[i].posX = randomise(marginRight - snow[i].size);
+                snow[i].posY = 0;
+            }
+        }
+
+        setTimeout("moveSnow()", snowRefresh);
+    }
+
+    for (i = 0; i <= snowMax; i++) {
+        document.write("<span id='flake" + i + "' style='" + snowStyles + "position:absolute;top:-" + snowMaxSize + "'>" + snowEntity + "</span>");
+    }
+
+    window.addEventListener('resize', resize);
+    window.addEventListener('load', initSnow);
+    </script>
+</body>
+</html>
